@@ -1,8 +1,9 @@
-
-
 const { Client } = require("pg");
 
-const client = new Client("postgresql://gauri:O3LUdHzEy05phCYPUxYi5A@cluster01-3402.7s5.cockroachlabs.cloud:26257/uers?sslmode=verify-full");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const client = new Client(process.env.DB_URL);
 /**
  * `CREATE TABLE USERS (
       id serial PRIMARY KEY,
@@ -24,8 +25,10 @@ const client = new Client("postgresql://gauri:O3LUdHzEy05phCYPUxYi5A@cluster01-3
   } catch (err) {
     console.error("error executing query:", err);
   } finally {
-   // console.log("CLOSING DATABASE CONNECTION");
-   // client.end();
+    // console.log("CLOSING DATABASE CONNECTION");
+    // client.end();
   }
 })();
 module.exports = client;
+
+// data base connection onach thevaycha db connection ti end wali line kadhun tak combarr pilllu ata nehemi onach thevacha ahe ka ? ho techya shivay appllication kasa chalel deployment madhe 
